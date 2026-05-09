@@ -1,14 +1,34 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-    private float bulletSpeed = 50f;
-    private float bulletLifetime = 0.2f;
+    private Rigidbody2D rb;
+
+    private float bulletSpeed = 100f;
+    private float bulletLifetime = 0.1f;
+
+    private void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Start() {
+        rb.linearVelocity = transform.right * bulletSpeed;
+
         Destroy(gameObject, bulletLifetime);
     }
 
     private void Update() {
-        transform.Translate(Vector2.right * Time.deltaTime * bulletSpeed, Space.Self);
+        transform.Translate(Vector3.right * bulletSpeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Building")) {
+            Destroy(gameObject);
+        }
     }
 }

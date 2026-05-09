@@ -21,6 +21,15 @@ public class Player : MonoBehaviour {
         else {
             cameraController.useLookAhead = false;
         }
+
+        if (Mouse.current.leftButton.wasPressedThisFrame) {
+            GameObject weapon = transform.GetChild(0).gameObject;
+            if (weapon != null) {
+                if (weapon.CompareTag("Weapon")) {
+                    weapon.GetComponent<Weapon>().Shoot();
+                }
+            }
+        }
     }
 
     private void LateUpdate() {
