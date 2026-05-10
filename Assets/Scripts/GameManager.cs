@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Assemblies;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour {
     public static GameManager main;
@@ -25,6 +27,12 @@ public class GameManager : MonoBehaviour {
 
         aliveEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
         deadEnemies = new List<GameObject>();
+    }
+
+    private void Update() {
+        if (Keyboard.current.rKey.wasPressedThisFrame) {
+            ChangeToLife();
+        }
     }
 
     public void ChangeToHell() {
