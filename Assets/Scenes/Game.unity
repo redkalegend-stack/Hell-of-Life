@@ -2832,7 +2832,7 @@ GameObject:
   - component: {fileID: 1906559664}
   m_Layer: 0
   m_Name: Life
-  m_TagString: Untagged
+  m_TagString: Life
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

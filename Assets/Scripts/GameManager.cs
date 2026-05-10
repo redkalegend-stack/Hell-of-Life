@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        Debug.Log("Spawn Position: " + spawnPosition);
+        //Debug.Log("Spawn Position: " + spawnPosition);
 
         if (player != null) {
             player.transform.position = spawnPosition;
