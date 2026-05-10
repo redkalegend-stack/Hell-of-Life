@@ -105,8 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b2565252491bec439c24aa3de758def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  cooldownTime: 1
+  cooldownTime: 0.4
   bulletPrefab: {fileID: 266758929014877186, guid: b0766ebaf1a71f14182428641281b9fe, type: 3}
+  isMusic: 1
 --- !u!210 &5119463870533973147
 SortingGroup:
   m_ObjectHideFlags: 0

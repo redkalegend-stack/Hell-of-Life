@@ -14,7 +14,7 @@ public class RootDisappearing : MonoBehaviour {
     private void Update() {
         if (isPlayerNearby) {
             Color color = spriteRenderer.color;
-            color.a = Mathf.MoveTowards(color.a, 0.65f, fadeSpeed * Time.deltaTime);
+            color.a = Mathf.MoveTowards(color.a, 0.4f, fadeSpeed * Time.deltaTime);
             spriteRenderer.color = color;
         } else {
             Color color = spriteRenderer.color;

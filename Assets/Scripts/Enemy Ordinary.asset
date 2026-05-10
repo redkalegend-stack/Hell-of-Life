@@ -15,6 +15,12 @@ MonoBehaviour:
   visionAngle: 45
   visionDistance: 12
   rayCount: 10
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
   speed: 4
   rotationSpeed: 120
   wanderSpeed: 3

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.Assemblies;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public static GameManager main;
@@ -13,6 +16,13 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private List<GameObject> enemySpawnPositionsOnHell;
 
     private Light2D light;
+
+    [Header("UI Panels")]
+    [SerializeField] private Sprite winPanel;
+    [SerializeField] private Sprite losePanel;
+
+    [SerializeField] private Image displayImage;
+    [SerializeField] private Button restartButton;
 
     private void Awake() {
         if (main == null) {
@@ -27,15 +37,19 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        Debug.Log("Game Manager Started");
+        // Debug.Log("Game Manager Started");
+
+        displayImage.sprite = null;
+        displayImage.enabled = false;
+        restartButton.gameObject.SetActive(false);
 
         aliveEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
         deadEnemies = new List<GameObject>();
     }
 
     private void Update() {
-        if (Keyboard.current.rKey.wasPressedThisFrame) {
-            ChangeToLife();
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+            SceneManager.LoadScene("Menu");
         }
     }
 
@@ -45,6 +59,7 @@ public class GameManager : MonoBehaviour {
         }
 
         else {
+            MusicManager.PlayHellMusic();
             // Debug.Log("Changing to Hell...");
             light.intensity = 0.6f;
 
@@ -67,7 +82,7 @@ public class GameManager : MonoBehaviour {
 
     private void ChangeToLife() {
         // Debug.Log("Changing to Life...");
-
+        MusicManager.PlayLifeMusic();  
         light.intensity = 1f;
 
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -106,7 +121,7 @@ public class GameManager : MonoBehaviour {
 
     private void CheckAliveEnemies() {
         if (aliveEnemies.Count == 0) {
-            Debug.Log("You Win!");
+            WinGame();
         }
     }
 
@@ -117,10 +132,17 @@ public class GameManager : MonoBehaviour {
     }
 
     private void WinGame() {
-        Debug.Log("You Win!");
+        displayImage.sprite = winPanel;
+        displayImage.enabled = false;
     }
 
     private void LoseGame() {
-        Debug.Log("You Lose!");
+        displayImage.sprite = losePanel;
+        displayImage.enabled = false;
+        restartButton.gameObject.SetActive(true);
+    }
+
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour {
     }
 
     private void Update() {
-        // Player Detection
+
         if (isPlayerDetected) {
             Transform player = GetPlayerTransform();
             if (player == null) return;
@@ -93,8 +93,8 @@ public class Enemy : MonoBehaviour {
         }
         else {
             Wander();
-            ScanForPlayer();
         }
+        ScanForPlayer();
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
