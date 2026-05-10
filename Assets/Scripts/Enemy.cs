@@ -4,7 +4,7 @@ using Unity.AppUI.Core;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    // Raycasting
+    // Ray Casting
     [Header ("RayCasting")]
     [SerializeField] private float visionAngle = 45f;
     [SerializeField] private float visionDistance = 12f;
@@ -14,6 +14,11 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] private float rotationSpeed = 120f;
 
+
+    [SerializeField] private float wanderSpeed = 2f;
+    [SerializeField] private float wanderRotationSpeed = 1f;
+    [SerializeField] private float wanderDirection;
+
     private bool isPlayerDetected;
     private bool isRotating;
 
@@ -21,7 +26,6 @@ public class Enemy : MonoBehaviour {
 
     private float enemySpeed;
     [SerializeField] private float detectionRange;
-    [SerializeField] private float keepDistance; // Distance to maintain from the player when detected
     [SerializeField] private float retreatDistanceMax;
     [SerializeField] private float retreatDistanceMin;
 
@@ -29,6 +33,8 @@ public class Enemy : MonoBehaviour {
     private GameObject weapon;
 
     private void Awake() {
+        detectionRange = 3f;
+
         enemySpeed = 3f;
         retreatDistanceMax = 5f;
         retreatDistanceMin = 3f;
@@ -58,11 +64,15 @@ public class Enemy : MonoBehaviour {
         }
 
         else {
-            BehaveNormal();
+            Wander();
         }
 
+    }
+
+    private void FixedUpdate() {
+   
         // Close Range Detection
-        if (Vector2.Distance(transform.position, player.position) < detectionRange) {
+        if (ComeTooClose()) {
             Debug.Log("Player Detected by coming too close!");
             isPlayerDetected = true;
         }
@@ -70,6 +80,13 @@ public class Enemy : MonoBehaviour {
         else {
             ScanForPlayer();
         }
+    }
+
+    private bool ComeTooClose() {
+        if (player == null) return false;
+
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, detectionRange, detectionMask);
+        return hit != null && hit.CompareTag("Player");
     }
 
     private void ScanForPlayer() {
@@ -111,18 +128,24 @@ public class Enemy : MonoBehaviour {
         losePlayerCoroutine = null;
     }
 
-    private void BehaveNormal() {
-        // If no wander target, pick a random point nearby
-        if (wanderTarget == Vector2.zero || Vector2.Distance(transform.position, wanderTarget) < 0.1f) {
-            Vector2 randomOffset = Random.insideUnitCircle * wanderDistance;
-            wanderTarget = (Vector2)transform.position + randomOffset;
+    private void Wander() {
+
+        wanderDirection += (Random.value - 0.5f) * wanderSpeed;
+
+        float angleDiff = wanderDirection - transform.eulerAngles.z * Mathf.Deg2Rad;
+
+        while (angleDiff > Mathf.PI) angleDiff -= Mathf.PI * 2;
+        while (angleDiff < -Mathf.PI) angleDiff += Mathf.PI * 2;
+
+        if (Mathf.Abs(angleDiff) > wanderRotationSpeed) {
+            transform.eulerAngles += new Vector3(0, 0, Mathf.Sign(angleDiff) * wanderRotationSpeed * Mathf.Rad2Deg);
+        }
+        else {
+            transform.eulerAngles = new Vector3(0, 0, wanderDirection * Mathf.Rad2Deg);
         }
 
-        // Move toward wander target
-        transform.position = Vector2.MoveTowards(transform.position, wanderTarget, wanderSpeed * Time.deltaTime);
+        transform.position += new Vector3(Mathf.Cos(transform.eulerAngles.z * Mathf.Deg2Rad) * wanderSpeed, Mathf.Sin(transform.eulerAngles.z * Mathf.Deg2Rad) * wanderSpeed, 0) * Time.deltaTime;
 
-        // Idle rotation (optional, makes them look around)
-        transform.Rotate(Vector3.forward * idleRotationSpeed * Time.deltaTime);
     }
 
     private void MoveTowardsPlayer() {
