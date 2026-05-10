@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3f83a117493c15440b7785ceffd22df3
+guid: 9b26faabddce5344a8300f993ff2401c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4133103754698827007
-    second: grass1_0
+      213: 6505366208653593921
+    second: devil3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -126,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grass1_0
+      name: devil3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
-        height: 500
+        width: 100
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10bd751880444a6c0800000000000000
-      internalID: -4133103754698827007
+      spriteID: 14d80a09914b74a50800000000000000
+      internalID: 6505366208653593921
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      grass1_0: -4133103754698827007
+      devil3_0: 6505366208653593921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
