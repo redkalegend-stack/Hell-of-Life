@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Weapon
+  - Enemy
+  - SpawnPos
+  - SpawnPosEnemy
+  - Hell
+  - Life
   layers:
   - Default
   - TransparentFX
@@ -47,6 +52,9 @@ TagManager:
     locked: 0
   - name: Foundation
     uniqueID: 2330782497
+    locked: 0
+  - name: Weapon
+    uniqueID: 3413611745
     locked: 0
   - name: Object
     uniqueID: 683736737
