@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Assemblies;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour {
     public static GameManager main;
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private List<GameObject> deadEnemies;
 
     [SerializeField] private List<GameObject> enemySpawnPositionsOnHell;
+
+    private Light2D light;
 
     private void Awake() {
         if (main == null) {
@@ -20,6 +23,7 @@ public class GameManager : MonoBehaviour {
         }
 
         enemySpawnPositionsOnHell = new List<GameObject>(GameObject.FindGameObjectsWithTag("SpawnPosEnemy"));
+        light = GetComponent<Light2D>();
     }
 
     private void Start() {
@@ -36,30 +40,40 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangeToHell() {
-        Debug.Log("Changing to Hell...");
-
-        var player = GameObject.FindGameObjectWithTag("Player");
-        var spawnPosition = GameObject.FindGameObjectWithTag("Hell").transform.Find("SpawnPos").position;
-
-        if (spawnPosition == null) {
-            Debug.LogError("Spawn position not found for Hell!");
-            return;
+        if (deadEnemies.Count == 0) {
+            LoseGame();
         }
 
-        //Debug.Log("Spawn Position: " + spawnPosition);
+        else {
+            // Debug.Log("Changing to Hell...");
+            light.intensity = 0.6f;
 
-        if (player != null) {
-            player.transform.position = spawnPosition;
+            var player = GameObject.FindGameObjectWithTag("Player");
+            var spawnPosition = GameObject.FindGameObjectWithTag("Hell").transform.Find("SpawnPos").position;
+
+            if (spawnPosition == null) {
+                Debug.LogError("Spawn position not found for Hell!");
+                return;
+            }
+
+            //Debug.Log("Spawn Position: " + spawnPosition);
+
+            if (player != null) {
+                player.transform.position = spawnPosition;
+            }
         }
+
     }
 
     private void ChangeToLife() {
-        Debug.Log("Changing to Life...");
+        // Debug.Log("Changing to Life...");
+
+        light.intensity = 1f;
 
         var player = GameObject.FindGameObjectWithTag("Player");
         var spawnPosition = GameObject.FindGameObjectWithTag("Life").transform.Find("SpawnPos").position;
 
-        Debug.Log("Spawn Position: " + spawnPosition);
+        // Debug.Log("Spawn Position: " + spawnPosition);
 
         if (player != null) {
             player.transform.position = spawnPosition;
@@ -76,14 +90,23 @@ public class GameManager : MonoBehaviour {
             deadEnemies.Add(enemy);
 
             enemy.transform.position = enemySpawnPositionsOnHell[Random.Range(0, enemySpawnPositionsOnHell.Count)].transform.position;
+
+            CheckAliveEnemies();
         }
 
         // If enemy killed in Hell, it just dies
         else if (deadEnemies.Contains(enemy)) {
             deadEnemies.Remove(enemy);
-            CheckDeads();
-
             Destroy(enemy);
+
+
+            CheckDeads();
+        }
+    }
+
+    private void CheckAliveEnemies() {
+        if (aliveEnemies.Count == 0) {
+            Debug.Log("You Win!");
         }
     }
 
@@ -91,5 +114,13 @@ public class GameManager : MonoBehaviour {
         if (deadEnemies.Count == 0) {
             ChangeToLife();
         }
+    }
+
+    private void WinGame() {
+        Debug.Log("You Win!");
+    }
+
+    private void LoseGame() {
+        Debug.Log("You Lose!");
     }
 }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6702144225061957535}
   - component: {fileID: 5426347331374675526}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7184849714372254094}
   - component: {fileID: 7294707285953074244}
+  - component: {fileID: 1035307460356078674}
+  - component: {fileID: 4727230224689334756}
   m_Layer: 0
   m_Name: Mansion Root
   m_TagString: Untagged
@@ -260,6 +262,64 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!61 &1035307460356078674
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733336639689183435}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.83, y: 9.35}
+    newSize: {x: 2.69, y: 9.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 11}
+  m_EdgeRadius: 0
+--- !u!114 &4727230224689334756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733336639689183435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841025e8e6d844d4b83d063e112d9615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootDisappearing
 --- !u!1 &3112439218259927635
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +421,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6937537283182899794}
   - component: {fileID: 4906329195475757417}
+  - component: {fileID: 4649202199238878618}
+  - component: {fileID: 7413576757679629273}
   m_Layer: 0
   m_Name: Mansion Root
   m_TagString: Untagged
@@ -442,6 +504,64 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!61 &4649202199238878618
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854713732477518226}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.69, y: 9.32}
+    newSize: {x: 2.83, y: 9.35}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 11}
+  m_EdgeRadius: 0
+--- !u!114 &7413576757679629273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3854713732477518226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841025e8e6d844d4b83d063e112d9615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootDisappearing
 --- !u!1 &4237215935259287475
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,9 +663,9 @@ GameObject:
   m_Component:
   - component: {fileID: 963632033195488277}
   - component: {fileID: 5950082915748970988}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -621,9 +741,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2436409970662915170}
   - component: {fileID: 7308128301646784760}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -869,9 +989,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4651878371794338269}
   - component: {fileID: 1825157818425997786}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,9 +1067,9 @@ GameObject:
   m_Component:
   - component: {fileID: 233837787432891712}
   - component: {fileID: 473099371635529599}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1025,9 +1145,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6360000113795890620}
   - component: {fileID: 3240103117361179585}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1194,6 +1314,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3269941675236382396}
   - component: {fileID: 1280101894625078544}
+  - component: {fileID: 4287789124031592513}
+  - component: {fileID: 8344190100860363866}
   m_Layer: 0
   m_Name: Mansion Root
   m_TagString: Untagged
@@ -1275,6 +1397,64 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!61 &4287789124031592513
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629535652103917339}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 13.76, y: 4.22}
+    newSize: {x: 13.76, y: 4.22}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 15, y: 5}
+  m_EdgeRadius: 0
+--- !u!114 &8344190100860363866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7629535652103917339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841025e8e6d844d4b83d063e112d9615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RootDisappearing
 --- !u!1 &8307154306229262969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,9 +1465,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4765593690169208012}
   - component: {fileID: 8258047575321777084}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1363,9 +1543,9 @@ GameObject:
   m_Component:
   - component: {fileID: 342517764475636539}
   - component: {fileID: 7592252100049665793}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
