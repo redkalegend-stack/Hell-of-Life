@@ -59,7 +59,10 @@ TagManager:
   - name: Object
     uniqueID: 683736737
     locked: 0
-  - name: Roof
+  - name: Bush
+    uniqueID: 3714433469
+    locked: 0
+  - name: Root
     uniqueID: 2822686783
     locked: 0
   m_RenderingLayers:
